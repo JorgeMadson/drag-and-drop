@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arrastar e Soltar Imagens</title>
+    <style>
+      .imagem {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #000;
+        margin: 10px;
+        padding: 10px;
+        display: inline-block;
+      }
+      .area-de-destino {
+        width: 400px;
+        height: 200px;
+        border: 2px dashed #000;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="imagem1.png" alt="Minion" id="imagem1" class="imagem" draggable="true" />
+    <img src="imagem2.png" alt="Cogumelo do Mário" id="imagem2" class="imagem" draggable="true" />
+    <div id="areaDeDestino" class="area-de-destino">
+      <p>Área de Destino</p>
+    </div>
+
+    <script>
+      // Selecionar as divs de imagem e a div de área de destino
+      var imagem1 = document.getElementById("imagem1");
+      var imagem2 = document.getElementById("imagem2");
+      var areaDeDestino = document.getElementById("areaDeDestino");
+
+      // Adicionar ouvintes de eventos de "dragstart" para as imagens
+      imagem1.addEventListener("dragstart", function (event) {
+        event.dataTransfer.setData("text/plain", event.target.id);
+      });
+
+      imagem2.addEventListener("dragstart", function (event) {
+        event.dataTransfer.setData("text/plain", event.target.id);
+      });
+
+      // Adicionar ouvintes de eventos de "dragover" e "drop" para a área de destino
+      areaDeDestino.addEventListener("dragover", function (event) {
+        event.preventDefault();
+      });
+
+      areaDeDestino.addEventListener("drop", function (event) {
+        // event.preventDefault();
+
+        var imagemId = event.dataTransfer.getData("text/plain");
+
+        // Adicionar a imagem arrastada à área de destino
+        var imagemArrastada = document.getElementById(imagemId);
+        areaDeDestino.appendChild(imagemArrastada);
+
+        // Limpar o ID da imagem arrastada
+        event.dataTransfer.clearData();
+
+        // Exibir uma mensagem de sucesso
+        alert("Imagem foi arrastada com sucesso para a área de destino!");
+      });
+    </script>
+  </body>
+</html>
