@@ -2,6 +2,8 @@
 # Tutorial drag-and-drop
 Vamos começar do início com um tutorial passo a passo detalhado para criar uma funcionalidade de arrastar e soltar imagens usando JavaScript.
 
+[Exemplo em funcionamento](https://jorgemadson.github.io/drag-and-drop/)
+
 ## Passo 1:
 Configurando o HTML básico Começamos criando um arquivo HTML básico com três divs: duas divs de imagem e uma div de área de destino. Cada div de imagem terá um ID único para que possamos identificá-las no JavaScript. A div de área de destino também terá um ID único para referenciá-la posteriormente. Além disso, adicionamos algumas classes CSS para estilizar as divs de imagem e a div de área de destino:
 
